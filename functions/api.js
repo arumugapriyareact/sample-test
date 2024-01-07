@@ -1,6 +1,7 @@
 const express = require('express');
 const serverless = require('serverless-http');
 const app = express();
+app.use(express.json());
 const router = express.Router();
 const Razorpay = require("razorpay");
 const crypto = require("crypto");
@@ -20,16 +21,14 @@ router.get("/check",async(req,res)=>{
   
 })
 router.post("/orders",async(req,res)=>{
-  console.log(req)
   try{
-    
       const instance= new Razorpay({
           key_id: "rzp_test_GX4az0Kga9TjoI",
           key_secret: "XwXATpfF8xcny6gYqCZWS4dR"
       })
 
       const options = {
-          amount: req.body.amount * 100,
+          amount: req.body.amount * 100 ,
           currency: "INR",
           receipt: crypto.randomBytes(10).toString("hex")
       }
@@ -79,4 +78,7 @@ router.post("/verify",async(req,res)=>{
 }) 
 
 app.use('/.netlify/functions/api', router);
+
+const port = process.env.PORT || 8000;
+app.listen(port,()=>{console.log(`Listening to port ${port}`)});
 module.exports.handler = serverless(app);
