@@ -10,9 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "crypto": "^1.0.1",
     "express": "^4.17.1",
     "netlify-cli": "^12.7.2",
     "netlify-lambda": "^2.0.15",
+    "razorpay": "^2.9.2",
     "serverless-http": "^2.7.0"
   }
 }
