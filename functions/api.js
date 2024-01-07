@@ -1,10 +1,13 @@
 const express = require('express');
 const serverless = require('serverless-http');
+const cors = require("cors");
 const app = express();
 app.use(express.json());
+app.use(cors());
 const router = express.Router();
 const Razorpay = require("razorpay");
 const crypto = require("crypto");
+
 
 let records = [];
 
