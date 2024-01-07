@@ -82,7 +82,7 @@ router.post("/verify",async(req,res)=>{
     }
 })
 
-app.use('/.netlify/functions/api', router);
+app.use('/.netlify/functions/index', router);
 const port = process.env.PORT || 8000;
 app.listen(port,()=>{console.log(`Listening to port ${port}`)});
 module.exports.handler=serverless(app)
